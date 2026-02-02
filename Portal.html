@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DARKSYNTAX // RESOURCE_MATRIX</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;400;700&display=swap');
+        
+        body { 
+            background: #020203; 
+            color: #fff; 
+            font-family: 'JetBrains Mono', monospace;
+            background-image: radial-gradient(circle at 50% 50%, #0a1120 0%, #020203 100%);
+        }
+
+        .node-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .node-card:hover {
+            border-color: #3b82f6;
+            background: rgba(59, 130, 246, 0.05);
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.1);
+            transform: translateY(-5px) scale(1.02);
+        }
+
+        .node-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 2px;
+            background: linear-gradient(90deg, transparent, #3b82f6, transparent);
+            transform: translateX(-100%);
+            transition: 0.6s;
+        }
+
+        .node-card:hover::before {
+            transform: translateX(100%);
+        }
+
+        .scan-line {
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to bottom, transparent, rgba(59, 130, 246, 0.05), transparent);
+            position: fixed;
+            top: -100px;
+            animation: scan 6s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes scan {
+            to { top: 100vh; }
+        }
+    </style>
+</head>
+<body class="min-h-screen p-6 md:p-12">
+
+    <div class="scan-line"></div>
+
+    <header class="max-w-7xl mx-auto mb-16">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+            <div>
+                <div class="text-blue-500 text-[10px] tracking-[0.5em] font-bold mb-2 uppercase italic">Protocol: Resource_Navigation</div>
+                <h1 class="text-4xl md:text-5xl font-black tracking-tighter uppercase">External_Nodes</h1>
+            </div>
+            <div class="text-right">
+                <a href="index.html" class="text-xs text-gray-500 hover:text-white transition flex items-center gap-2">
+                    <i data-lucide="corner-up-left" class="w-4 h-4"></i> BACK_TO_CORE
+                </a>
+            </div>
+        </div>
+        <div class="w-full h-[1px] bg-white/5 mt-8"></div>
+    </header>
+
+    <main class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        
+        <a href="https://chat.whatsapp.com/YOUR_LINK" target="_blank" class="node-card p-6 rounded-xl flex flex-col group">
+            <div class="flex justify-between items-start mb-8">
+                <i data-lucide="message-circle" class="w-8 h-8 text-blue-500 group-hover:text-white transition"></i>
+                <span class="text-[8px] px-2 py-1 rounded border border-green-500/30 text-green-500 font-bold">ONLINE</span>
+            </div>
+            <h3 class="font-bold text-sm mb-2 uppercase tracking-tight">Main Community</h3>
+            <p class="text-[11px] text-gray-500 leading-relaxed mb-6">Primary communication uplink for DarkSyntax architects.</p>
+            <div class="mt-auto text-[9px] text-blue-400 font-bold tracking-widest opacity-0 group-hover:opacity-100 transition">INITIALIZE_LINK ></div>
+        </a>
+
+        <a href="PythonCore.html" target="_blank" class="node-card p-6 rounded-xl flex flex-col group">
+            <div class="flex justify-between items-start mb-8">
+                <i data-lucide="code" class="w-8 h-8 text-blue-500 group-hover:text-white transition"></i>
+                <span class="text-[8px] px-2 py-1 rounded border border-green-500/30 text-green-500 font-bold">ONLINE</span>
+            </div>
+            <h3 class="font-bold text-sm mb-2 uppercase tracking-tight">Python</h3>
+            <p class="text-[11px] text-gray-500 leading-relaxed mb-6">Learn Python syntax.</p>
+            <div class="mt-auto text-[9px] text-blue-400 font-bold tracking-widest opacity-0 group-hover:opacity-100 transition">REQUEST_ACCESS ></div>
+        </a>
+
+        <a href="CCore.html" target="_blank" class="node-card p-6 rounded-xl flex flex-col group">
+            <div class="flex justify-between items-start mb-8">
+                <i data-lucide="terminal" class="w-8 h-8 text-blue-500 group-hover:text-white transition"></i>
+                <span class="text-[8px] px-2 py-1 rounded border border-blue-500/30 text-green-500 font-bold">ONLINE</span>
+            </div>
+            <h3 class="font-bold text-sm mb-2 uppercase tracking-tight">C lang</h3>
+            <p class="text-[11px] text-gray-500 leading-relaxed mb-6">Learn C syntax.</p>
+            <div class="mt-auto text-[9px] text-blue-400 font-bold tracking-widest opacity-0 group-hover:opacity-100 transition">PULL_INTEL ></div>
+        </a>
+
+        <a href="https://edabit.com/challenges" target="_blank" class="node-card p-6 rounded-xl flex flex-col group">
+            <div class="flex justify-between items-start mb-8">
+                <i data-lucide="cpu" class="w-8 h-8 text-blue-500 group-hover:text-white transition"></i>
+                 <span class="text-[8px] px-2 py-1 rounded border border-green-500/30 text-green-500 font-bold">ONLINE</span>
+            </div>
+            <h3 class="font-bold text-sm mb-2 uppercase tracking-tight">Edabit Challenges</h3>
+            <p class="text-[11px] text-gray-500 leading-relaxed mb-6">Solve coding challenges and improve your programming skills.</p>
+            <div class="mt-auto text-[9px] text-blue-400 font-bold tracking-widest opacity-0 group-hover:opacity-100 transition">ESTABLISH_UPLINK ></div>
+        </a>
+        
+        <a href="https://www.hackerrank.com/domains/python" target="_blank" class="node-card p-6 rounded-xl flex flex-col group">
+            <div class="flex justify-between items-start mb-8">
+                <i data-lucide="database" class="w-8 h-8 text-blue-500 group-hover:text-white transition"></i>
+                <span class="text-[8px] px-2 py-1 rounded border border-green-500/30 text-green-500 font-bold">ONLINE</span>
+            </div>
+            <h3 class="font-bold text-sm mb-2 uppercase tracking-tight">Hacker Rank</h3>
+            <p class="text-[11px] text-gray-500 leading-relaxed mb-6">Test your programming skills.</p>
+            <div class="mt-auto text-[9px] text-blue-400 font-bold tracking-widest opacity-0 group-hover:opacity-100 transition">REQUEST_ACCESS ></div>
+        </a>
+
+        <a href="ComingSoon.jpeg" target="_blank" class="node-card p-6 rounded-xl flex flex-col group">
+            <div class="flex justify-between items-start mb-8">
+                <i data-lucide="shield-check" class="w-8 h-8 text-blue-500 group-hover:text-white transition"></i>
+                <span class="text-[8px] px-2 py-1 rounded border border-yellow-500/30 text-yellow-500 font-bold">WAITING</span>
+            </div>
+            <h3 class="font-bold text-sm mb-2 uppercase tracking-tight">Cyber Security</h3>
+            <p class="text-[11px] text-gray-500 leading-relaxed mb-6">Test your skill.</p>
+            <div class="mt-auto text-[9px] text-blue-400 font-bold tracking-widest opacity-0 group-hover:opacity-100 transition">PULL_INTEL ></div>
+        </a>
+
+        <a href="ComingSoon.jpeg" class="node-card p-6 rounded-xl flex flex-col group">
+            <div class="flex justify-between items-start mb-8">
+                <i data-lucide="brain-circuit" class="w-8 h-8 text-blue-500 group-hover:text-white transition"></i>
+                <span class="text-[8px] px-2 py-1 rounded border border-yellow-500/30 text-yellow-500 font-bold">WAITING</span>
+            </div>
+            <h3 class="font-bold text-sm mb-2 uppercase tracking-tight">AI</h3>
+            <p class="text-[11px] text-gray-500 leading-relaxed mb-6">Learn about artificial intelligence.</p>
+            <div class="mt-auto text-[9px] text-blue-400 font-bold tracking-widest opacity-0 group-hover:opacity-100 transition">ESTABLISH_UPLINK ></div>
+        </a>
+
+    </main>
+
+    <footer class="max-w-7xl mx-auto mt-20 text-center">
+        <div class="text-[8px] text-gray-700 tracking-[0.8em] uppercase">DarkSyntax // Portal_Interface_v1.0</div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

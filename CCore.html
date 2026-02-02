@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DARKSYNTAX // C_KERNEL_ARCHIVE</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;400;700&display=swap');
+        
+        body { 
+            background: #020203; 
+            color: #fff; 
+            font-family: 'JetBrains Mono', monospace;
+            scroll-behavior: smooth;
+        }
+
+        .terminal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        .syntax-module {
+            background: rgba(10, 10, 15, 0.6);
+            border: 1px solid rgba(59, 130, 246, 0.1);
+            border-top: 2px solid #ef4444; /* Red accent for C (Hardware/Danger) */
+            padding: 1.5rem;
+            border-radius: 4px;
+        }
+
+        pre {
+            background: #000;
+            padding: 1rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            overflow-x: auto;
+            border: 1px solid #111;
+        }
+
+        .kw { color: #ff7b72; }    /* Keywords */
+        .str { color: #a5d6ff; }   /* Strings */
+        .fn { color: #d2a8ff; }    /* Functions */
+        .num { color: #79c0ff; }   /* Numbers */
+        .type { color: #ffa657; }  /* Data Types */
+        .com { color: #8b949e; }   /* Comments */
+        .pre { color: #d2a8ff; }   /* Preprocessor */
+
+        .section-header {
+            color: #ef4444;
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 0.3em;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="sticky top-0 z-50 bg-black/80 backdrop-blur-md p-6 border-b border-white/5 flex justify-between items-center">
+        <div>
+            <h1 class="text-xl font-black italic">C<span class="text-red-500">_KERNEL_ARCHIVE</span></h1>
+            <p class="text-[8px] text-gray-500 uppercase tracking-widest">Hardware Abstraction Layer // ISO/IEC 9899</p>
+        </div>
+        <div class="flex gap-4">
+             <a href="Portal.html" class="text-[10px] border border-white/10 px-3 py-1 hover:bg-white/5 transition">RETURN_PORTAL</a>
+        </div>
+    </header>
+
+    <div class="terminal-grid">
+
+        <div class="syntax-module">
+            <div class="section-header"><i data-lucide="settings"></i> 01_PREPROCESSOR</div>
+            <pre>
+<span class="pre">#include</span> <span class="str">&lt;stdio.h&gt;</span>
+<span class="pre">#define</span> PI <span class="num">3.14159</span>
+<span class="pre">#define</span> <span class="fn">SQR</span>(x) ((x) * (x))
+
+<span class="pre">#ifdef</span> DEBUG
+    <span class="com">// Conditional Compilation</span>
+<span class="pre">#endif</span>
+            </pre>
+        </div>
+
+        <div class="syntax-module">
+            <div class="section-header"><i data-lucide="binary"></i> 02_DATA_TYPES</div>
+            <pre>
+<span class="type">int</span> core_id = <span class="num">1024</span>;
+<span class="type">float</span> voltage = <span class="num">5.5f</span>;
+<span class="type">char</span> signal = <span class="str">'A'</span>;
+<span class="type">double</span> precision = <span class="num">0.0000001</span>;
+<span class="type">unsigned short</span> port = <span class="num">8080</span>;
+<span class="type">long long</span> big_data = <span class="num">99999999LL</span>;
+            </pre>
+        </div>
+
+        <div class="syntax-module">
+            <div class="section-header"><i data-lucide="mouse-pointer-2"></i> 03_POINTER_LOGIC</div>
+            <pre>
+<span class="type">int</span> val = <span class="num">42</span>;
+<span class="type">int</span> <span class="op">*</span>ptr = <span class="op">&amp;</span>val; <span class="com">// Address-of</span>
+
+<span class="fn">printf</span>(<span class="str">"%d"</span>, <span class="op">*</span>ptr); <span class="com">// Dereferencing</span>
+
+<span class="com">// Null Pointer</span>
+<span class="type">void</span> <span class="op">*</span>raw_mem = <span class="kw">NULL</span>;
+            </pre>
+        </div>
+
+        <div class="syntax-module">
+            <div class="section-header"><i data-lucide="hard-drive"></i> 04_DYNAMIC_MEMORY</div>
+            <pre>
+<span class="com">// Allocation on Heap</span>
+<span class="type">int</span> <span class="op">*</span>arr = (<span class="type">int</span><span class="op">*</span>)<span class="fn">malloc</span>(<span class="num">5</span> <span class="op">*</span> <span class="kw">sizeof</span>(<span class="type">int</span>));
+
+<span class="kw">if</span> (arr <span class="op">!=</span> <span class="kw">NULL</span>) {
+    <span class="fn">free</span>(arr); <span class="com">// Prevent memory leaks</span>
+}
+
+<span class="com">// calloc (initialized to zero)</span>
+<span class="type">int</span> <span class="op">*</span>z_arr = (<span class="type">int</span><span class="op">*</span>)<span class="fn">calloc</span>(<span class="num">5</span>, <span class="kw">sizeof</span>(<span class="type">int</span>));
+            </pre>
+        </div>
+
+        <div class="syntax-module">
+            <div class="section-header"><i data-lucide="layout-grid"></i> 05_STRUCTS_UNIONS</div>
+            <pre>
+<span class="kw">struct</span> User {
+    <span class="type">int</span> id;
+    <span class="type">char</span> name[<span class="num">20</span>];
+};
+
+<span class="kw">union</span> Data {
+    <span class="type">int</span> i;
+    <span class="type">float</span> f; <span class="com">// Memory shared</span>
+};
+
+<span class="kw">typedef struct</span> User <span class="type">Architect</span>;
+            </pre>
+        </div>
+
+        <div class="syntax-module">
+            <div class="section-header"><i data-lucide="git-branch"></i> 06_CONTROL_FLOW</div>
+            <pre>
+<span class="kw">switch</span> (signal) {
+    <span class="kw">case</span> <span class="str">'A'</span>: <span class="fn">handle_active</span>(); <span class="kw">break</span>;
+    <span class="kw">default</span>: <span class="kw">return</span> <span class="num">0</span>;
+}
+
+<span class="com">// Pointer-based loop</span>
+<span class="kw">while</span> (<span class="op">*</span>str_ptr <span class="op">!=</span> <span class="str">'\0'</span>) {
+    str_ptr<span class="op">++</span>;
+}
+            </pre>
+        </div>
+
+        <div class="syntax-module">
+            <div class="section-header"><i data-lucide="archive"></i> 07_STORAGE_CLASSES</div>
+            <pre>
+<span class="kw">static</span> <span class="type">int</span> persistent = <span class="num">0</span>;
+<span class="kw">extern</span> <span class="type">int</span> global_flag;
+<span class="kw">register</span> <span class="type">int</span> counter = <span class="num">0</span>; <span class="com">// CPU optimization</span>
+<span class="kw">volatile</span> <span class="type">int</span> sensor = <span class="num">0</span>;  <span class="com">// Hardware mapped</span>
+            </pre>
+        </div>
+
+        <div class="syntax-module">
+            <div class="section-header"><i data-lucide="file-text"></i> 08_FILE_IO</div>
+            <pre>
+<span class="type">FILE</span> <span class="op">*</span>fp = <span class="fn">fopen</span>(<span class="str">"kernel.log"</span>, <span class="str">"w"</span>);
+<span class="kw">if</span> (fp) {
+    <span class="fn">fprintf</span>(fp, <span class="str">"Boot Sequence: %d"</span>, <span class="num">1</span>);
+    <span class="fn">fclose</span>(fp);
+}
+            </pre>
+        </div>
+
+    </div>
+
+    <script>lucide.createIcons();</script>
+</body>
+</html>

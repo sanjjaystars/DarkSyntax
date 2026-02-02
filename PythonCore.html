@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DARKSYNTAX // COMPLETE_PYTHON_ARCHIVE</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;400;700&display=swap');
+        
+        body { 
+            background: #020203; 
+            color: #fff; 
+            font-family: 'JetBrains Mono', monospace;
+            scroll-behavior: smooth;
+        }
+
+        .terminal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        .syntax-module {
+            background: rgba(10, 10, 15, 0.6);
+            border: 1px solid rgba(59, 130, 246, 0.1);
+            border-top: 2px solid #3b82f6;
+            padding: 1.5rem;
+            border-radius: 4px;
+        }
+
+        pre {
+            background: #000;
+            padding: 1rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            overflow-x: auto;
+            border: 1px solid #111;
+        }
+
+        .kw { color: #ff7b72; }    /* Keywords */
+        .str { color: #a5d6ff; }   /* Strings */
+        .fn { color: #d2a8ff; }    /* Functions/Classes */
+        .num { color: #79c0ff; }   /* Numbers */
+        .op { color: #f0883e; }    /* Operators */
+        .com { color: #8b949e; }   /* Comments */
+
+        .section-header {
+            color: #3b82f6;
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 0.3em;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="sticky top-0 z-50 bg-black/80 backdrop-blur-md p-6 border-b border-white/5 flex justify-between items-center">
+        <div>
+            <h1 class="text-xl font-black italic">PYTHON<span class="text-blue-500">_MANIFEST</span></h1>
+            <p class="text-[8px] text-gray-500 uppercase tracking-widest">Global Language Specification // v3.x</p>
+        </div>
+        <div class="flex gap-4">
+             <a href="Portal.html" class="text-[10px] border border-white/10 px-3 py-1 hover:bg-white/5 transition">RETURN_PORTAL</a>
+        </div>
+    </header>
+
+    <div class="terminal-grid">
+
+        <div class="syntax-module">
+            <div class="section-header"><i data-lucide="database"></i> 01_DATA_STRUCTURES</div>
+            <pre>
+<span class="com"># List (Mutable)</span>
+items = [<span class="str">"node"</span>, <span class="num">101</span>, <span class="num">0.5</span>]
+items.<span class="fn">append</span>(<span class="str">"sync"</span>)
+
+<span class="com"># Tuple (Immutable)</span>
+coords = (<span class="num">10</span>, <span class="num">20</span>)
+
+<span class="com"># Dictionary (Key-Value)</span>
+sys = {<span class="str">"id"</span>: <span class="num">88</span>, <span class="str">"status"</span>: <span class="str">"active"</span>}
+
+<span class="com"># Set (Unique items)</span>
+unique_ids = {<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>, <span class="num">3</span>} <span class="com"># {1, 2, 3}</span>
+            </pre>
+        </div>
+
+        <div class="syntax-module">
+            <div class="section-header"><i data-lucide="zap"></i> 02_COMPREHENSIONS</div>
+            <pre>
+<span class="com"># List Comprehension</span>
+sq = [x<span class="op">**</span><span class="num">2</span> <span class="kw">for</span> x <span class="kw">in</span> range(<span class="num">10</span>) <span class="kw">if</span> x <span class="op">></span> <span class="num">5</span>]
+
+<span class="com"># Dictionary Comprehension</span>
+map = {f<span class="str">"ID_{x}"</span>: x <span class="kw">for</span> x <span class="kw">in</span> range(<span class="num">3</span>)}
+
+<span class="com"># Set Comprehension</span>
+chars = {c.<span class="fn">upper</span>() <span class="kw">for</span> c <span class="kw">in</span> <span class="str">"syntax"</span>}
+            </pre>
+        </div>
+
+        <div class="syntax-module">
+            <div class="section-header"><i data-lucide="git-merge"></i> 03_CONTROL_FLOW</div>
+            <pre>
+<span class="com"># Match Case (Python 3.10+)</span>
+<span class="kw">match</span> command:
+    <span class="kw">case</span> <span class="str">"START"</span>: <span class="fn">init</span>()
+    <span class="kw">case</span> <span class="str">"STOP"</span>: <span class="fn">shutdown</span>()
+    <span class="kw">case</span> _: <span class="fn">print</span>(<span class="str">"Unknown"</span>)
+
+<span class="com"># Context Manager</span>
+<span class="kw">with</span> <span class="fn">open</span>(<span class="str">"log.txt"</span>, <span class="str">"r"</span>) <span class="kw">as</span> file:
+    content = file.<span class="fn">read</span>()
+            </pre>
+        </div>
+
+        <div class="syntax-module">
+            <div class="section-header"><i data-lucide="cpu"></i> 04_FUNCTIONAL_OPS</div>
+            <pre>
+<span class="com"># Lambda Functions</span>
+add = <span class="kw">lambda</span> a, b: a <span class="op">+</span> b
+
+<span class="com"># Map / Filter</span>
+nums = [<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>, <span class="num">4</span>]
+evens = <span class="fn">list</span>(<span class="fn">filter</span>(<span class="kw">lambda</span> x: x <span class="op">%</span> <span class="num">2</span> <span class="op">==</span> <span class="num">0</span>, nums))
+
+<span class="com"># *args and **kwargs</span>
+<span class="kw">def</span> <span class="fn">stream</span>(<span class="op">*</span>data, <span class="op">**</span>meta):
+    <span class="fn">print</span>(data, meta)
+            </pre>
+        </div>
+
+        <div class="syntax-module">
+            <div class="section-header"><i data-lucide="layers"></i> 05_OOP_ADVANCED</div>
+            <pre>
+<span class="kw">class</span> <span class="fn">Drone</span>:
+    <span class="com"># Class variable</span>
+    origin = <span class="str">"DarkSyntax"</span>
+
+    <span class="kw">def</span> <span class="fn">__init__</span>(self, model):
+        self.model = model <span class="com"># Instance variable</span>
+
+    <span class="op">@</span><span class="fn">classmethod</span>
+    <span class="kw">def</span> <span class="fn">get_origin</span>(cls): <span class="kw">return</span> cls.origin
+
+    <span class="op">@</span><span class="fn">property</span>
+    <span class="kw">def</span> <span class="fn">label</span>(self): <span class="kw">return</span> f<span class="str">"M-{self.model}"</span>
+            </pre>
+        </div>
+
+        <div class="syntax-module">
+            <div class="section-header"><i data-lucide="refresh-cw"></i> 06_ITERATORS</div>
+            <pre>
+<span class="com"># Generators (Memory Efficient)</span>
+<span class="kw">def</span> <span class="fn">data_stream</span>():
+    <span class="kw">for</span> i <span class="kw">in</span> <span class="fn">range</span>(<span class="num">1000</span>):
+        <span class="kw">yield</span> f<span class="str">"Packet_{i}"</span>
+
+stream = <span class="fn">data_stream</span>()
+<span class="fn">next</span>(stream) <span class="com"># Packet_0</span>
+            </pre>
+        </div>
+
+        <div class="syntax-module">
+            <div class="section-header"><i data-lucide="wind"></i> 07_ASYNC_IO</div>
+            <pre>
+<span class="kw">import</span> asyncio
+
+<span class="kw">async def</span> <span class="fn">fetch_data</span>():
+    <span class="kw">await</span> asyncio.<span class="fn">sleep</span>(<span class="num">1</span>)
+    <span class="kw">return</span> {<span class="str">"status"</span>: <span class="num">200</span>}
+
+<span class="com"># Running the loop</span>
+<span class="com"># asyncio.run(fetch_data())</span>
+            </pre>
+        </div>
+
+        <div class="syntax-module">
+            <div class="section-header"><i data-lucide="shield-alert"></i> 08_ERROR_HANDLING</div>
+            <pre>
+<span class="kw">try</span>:
+    <span class="kw">raise</span> <span class="fn">ValueError</span>(<span class="str">"Override Error"</span>)
+<span class="kw">except</span> <span class="fn">ValueError</span> <span class="kw">as</span> e:
+    <span class="fn">print</span>(e)
+<span class="kw">finally</span>:
+    <span class="fn">cleanup_system</span>()
+            </pre>
+        </div>
+
+    </div>
+
+    <script>lucide.createIcons();</script>
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DARK SYNTAX | Architectural Hub</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Sanjjay Aroumougam",
+      "url": "https://darksyntax.xyz",
+      "jobTitle": "Lead Architect",
+      "affiliation": {
+        "@type": "Organization",
+        "name": "Dark Syntax"
+      }
+    }
+    </script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap');
+        
+        body { 
+            background-color: #030303; 
+            color: #ffffff; 
+            font-family: 'Space Grotesk', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .hero-glow {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
+            z-index: -1;
+        }
+
+        .glass-panel {
+            background: rgba(15, 15, 15, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-panel:hover {
+            border-color: #3b82f6;
+            background: rgba(20, 20, 25, 0.8);
+            transform: translateY(-5px);
+        }
+
+        .nav-link {
+            font-size: 10px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #666;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover { color: #3b82f6; }
+
+        @keyframes scan {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 0% 100%; }
+        }
+
+        .grid-overlay {
+            position: fixed;
+            inset: 0;
+            background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: -1;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="grid-overlay"></div>
+    <div class="hero-glow"></div>
+
+    <nav class="sticky top-0 z-50 px-8 py-6 flex justify-between items-center border-b border-white/5 bg-black/50 backdrop-blur-md">
+        <div class="flex items-center gap-3">
+            <img src="DSlogo.jpeg" alt="DarkSyntax" class="h-8 w-8 rounded-sm">
+            <span class="text-xl font-bold tracking-tighter italic uppercase">Dark<span class="text-blue-500">Syntax</span></span>
+        </div>
+        
+        <div class="hidden md:flex gap-10">
+            <a href="index.html" class="nav-link text-blue-500">Core</a>
+            <a href="AboutAuthor.html" class="nav-link">Architect</a>
+            <a href="Help.html" class="nav-link">Protocols</a>
+        </div>
+
+        <a href="Login.html" class="glass-panel px-6 py-2 rounded text-[10px] font-bold tracking-widest hover:text-blue-400">
+            LOGIN_SECURE
+        </a>
+    </nav>
+
+    <section class="relative pt-32 pb-20 px-6 text-center">
+        <div class="animate__animated animate__fadeInUp">
+            <div class="inline-flex items-center gap-2 px-3 py-1 border border-blue-500/20 rounded-full bg-blue-500/5 text-blue-400 text-[9px] font-bold uppercase tracking-[0.3em] mb-8">
+                <span class="relative flex h-2 w-2">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+                </span>
+                System_Link_Active
+            </div>
+            
+            <h1 class="text-6xl md:text-8xl font-black mb-6 tracking-tighter leading-none">
+                BUILD THE <br> <span class="text-transparent" style="-webkit-text-stroke: 1px #fff;">SYNTAX.</span>
+            </h1>
+            
+            <p class="max-w-xl mx-auto text-gray-400 text-sm md:text-base mb-12 font-light leading-relaxed">
+                The official portal for DarkSyntax industrial deconstruction. 
+                Bridging academic complexites and Industry 4.0 execution through unified protocols.
+            </p>
+
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="" class="bg-blue-600 hover:bg-blue-500 px-10 py-4 rounded-lg font-bold text-xs uppercase tracking-widest transition shadow-lg shadow-blue-600/20">
+                    Initialize Community
+                </a>
+                <a href="AboutAuthor.html" class="glass-panel px-10 py-4 rounded-lg font-bold text-xs uppercase tracking-widest">
+                    Author Dossier
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-7xl mx-auto px-8 py-20">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            
+            <a href="https://chat.whatsapp.com/YOUR_LINK" target="_blank" class="glass-panel p-10 rounded-2xl group flex flex-col items-center text-center">
+                <div class="w-14 h-14 bg-blue-500/10 rounded-full flex items-center justify-center mb-6 text-blue-500 group-hover:bg-blue-500 group-hover:text-white transition-all duration-500">
+                    <i data-lucide="message-square"></i>
+                </div>
+                <h3 class="text-lg font-bold mb-3 uppercase tracking-tight">Join Node</h3>
+                <p class="text-gray-500 text-xs leading-relaxed">Access real-time GPU compute projects and peer-to-peer architectural support.</p>
+            </a>
+
+            <a href="Help.html" class="glass-panel p-10 rounded-2xl group flex flex-col items-center text-center border-blue-500/20">
+                <div class="w-14 h-14 bg-blue-500/10 rounded-full flex items-center justify-center mb-6 text-blue-500 group-hover:bg-blue-500 group-hover:text-white transition-all duration-500">
+                    <i data-lucide="terminal"></i>
+                </div>
+                <h3 class="text-lg font-bold mb-3 uppercase tracking-tight">System Help</h3>
+                <p class="text-gray-500 text-xs leading-relaxed">Explore the technical manual and operational guidelines for DarkSyntax modules.</p>
+            </a>
+
+            <a href="Portal.html" class="glass-panel p-10 rounded-2xl group flex flex-col items-center text-center">
+                <div class="w-14 h-14 bg-blue-500/10 rounded-full flex items-center justify-center mb-6 text-blue-500 group-hover:bg-blue-500 group-hover:text-white transition-all duration-500">
+                    <i data-lucide="shield-check"></i>
+                </div>
+                <h3 class="text-lg font-bold mb-3 uppercase tracking-tight">PORTAL</h3>
+                <p class="text-gray-500 text-xs leading-relaxed">Access the main resource matrix and external nodes.</p>
+            </a>
+
+        </div>
+    </section>
+
+    <footer class="py-12 px-8 border-t border-white/5 bg-black/40">
+        <div class="max-w-7xl mx-auto flex flex-col md:row justify-between items-center gap-8">
+            <div class="text-[9px] text-gray-600 font-bold tracking-[0.4em] uppercase">
+                &copy; 2026 DarkSyntax Protocol // All Rights Reserved
+            </div>
+            <div class="flex gap-10">
+                <a href="#" class="text-gray-500 hover:text-white transition"><i data-lucide="instagram" class="w-4 h-4"></i></a>
+                <a href="#" class="text-gray-500 hover:text-white transition"><i data-lucide="github" class="w-4 h-4"></i></a>
+                <a href="#" class="text-gray-500 hover:text-white transition"><i data-lucide="linkedin" class="w-4 h-4"></i></a>
+            </div>
+            <div class="text-[8px] text-gray-700 italic">
+                LATENCY: 0.04ms // REGION: IN_PUDUCHERRY
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
