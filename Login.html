@@ -110,45 +110,48 @@
         </div>
     </div>
     <script type="module">
-  // Import the functions you need from the SDKs
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
   import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 
-  // YOUR CONFIG DATA (Paste what you copied from Firebase Console here)
+  // PASTE YOUR REAL DATA HERE
   const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_PROJECT.firebaseapp.com",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_PROJECT.appspot.com",
-    messagingSenderId: "YOUR_ID",
-    appId: "YOUR_APP_ID"
+    apiKey: "AIzaSyDYmhYFKEt5Pjb-ne2PJx-SfD5qLUxFJho",
+    authDomain: "dark-syntax-auth.firebaseapp.com",
+    projectId: "dark-syntax-auth",
+    storageBucket: "dark-syntax-auth.firebasestorage.app",
+    messagingSenderId: "155739239646",
+    appId: "1:155739239646:web:b7563988f4bc794385be4f",
+    measurementId: "G-26ZSC4HJZF"
   };
 
-  // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
 
-  // Handle Login
   const loginForm = document.querySelector('form');
+  const loginBtn = loginForm.querySelector('button');
+
   loginForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     
-    // Select inputs
-    const email = loginForm.querySelector('input[type="text"]').value; // Note: Firebase needs email format
+    // Update button UI
+    const originalBtnText = loginBtn.innerText;
+    loginBtn.innerText = "VERIFYING_CREDENTIALS...";
+    loginBtn.disabled = true;
+    
+    const email = loginForm.querySelector('input[type="text"]').value; 
     const password = loginForm.querySelector('input[type="password"]').value;
 
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      const user = userCredential.user;
-      
-      // Success Protocol
-      console.log("Access Granted:", user.uid);
-      window.location.href = "Portal.html";
+      console.log("ACCESS_GRANTED:", userCredential.user.uid);
+      window.location.href = "Portal.html"; 
     } catch (error) {
-      // Error Protocol
-      const errorCode = error.code;
-      console.error("Auth_Error:", errorCode);
-      alert("PROTOCOL_ERROR: " + error.message);
+      console.error("AUTH_ERROR:", error.code);
+      alert("PROTOCOL_ERROR: Access Denied. Verify Identity Key and Phrase.");
+      
+      // Reset button UI
+      loginBtn.innerText = originalBtnText;
+      loginBtn.disabled = false;
     }
   });
 </script>
