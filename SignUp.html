@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | DARK SYNTAX</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { background-color: #050505; color: white; overflow: hidden; font-family: 'Inter', sans-serif; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .input-glow:focus { outline: none; border-color: #10b981; box-shadow: 0 0 15px rgba(16, 185, 129, 0.3); }
+        .animated-gradient { background: linear-gradient(-45deg, #064e3b, #059669, #10b981, #34d399); background-size: 400% 400%; animation: gradient 10s ease infinite; }
+        @keyframes gradient { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        .blob { position: absolute; width: 600px; height: 600px; background: rgba(16, 185, 129, 0.08); filter: blur(100px); border-radius: 50%; z-index: -1; }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen">
+
+    <div class="blob top-[-150px] right-[-150px] animate-pulse"></div>
+
+    <div class="max-w-md w-full px-6 animate__animated animate__fadeInUp">
+        <div class="glass p-10 rounded-3xl shadow-2xl relative overflow-hidden">
+            
+            <div class="text-center mb-10">
+                <div class="flex justify-center items-center gap-3 mb-4">
+                    <img src="DSlogo.jpeg" alt="Logo" class="h-10 w-auto rounded border border-white/10">
+                    <h1 class="text-xl font-black italic tracking-tighter uppercase">
+                        New <span class="text-emerald-500">Architect</span>
+                    </h1>
+                </div>
+                <h2 class="text-gray-400 text-xs uppercase tracking-widest font-bold">Request System Access</h2>
+            </div>
+
+            <form id="signUpForm" class="space-y-6">
+                <div>
+                    <label class="block text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-2 ml-1">Email Node</label>
+                    <input type="email" id="email" placeholder="architect@darksyntax.com" required
+                        class="w-full bg-white/5 border border-white/10 rounded-xl py-3 px-4 text-sm text-white placeholder-gray-600 transition-all input-glow">
+                </div>
+
+                <div>
+                    <label class="block text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-2 ml-1">New Access Phrase</label>
+                    <input type="password" id="password" placeholder="••••••••" required
+                        class="w-full bg-white/5 border border-white/10 rounded-xl py-3 px-4 text-sm text-white placeholder-gray-600 transition-all input-glow">
+                </div>
+
+                <button type="submit" id="submitBtn"
+                    class="w-full animated-gradient py-4 rounded-xl font-black text-xs uppercase tracking-widest shadow-lg shadow-emerald-600/30 hover:brightness-110 active:scale-[0.98] transition-all">
+                    Register Identity
+                </button>
+            </form>
+
+            <div class="mt-8 text-center border-t border-white/10 pt-6">
+                <p class="text-gray-500 text-[10px] uppercase font-bold tracking-widest">
+                    Already recognized? 
+                    <a href="Login.html" class="text-emerald-400 hover:underline">Login_Gateway</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDYmhYFKEt5Pjb-ne2PJx-SfD5qLUxFJho",
+            authDomain: "dark-syntax-auth.firebaseapp.com",
+            projectId: "dark-syntax-auth",
+            storageBucket: "dark-syntax-auth.firebasestorage.app",
+            messagingSenderId: "155739239646",
+            appId: "1:155739239646:web:b7563988f4bc794385be4f"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        const form = document.getElementById('signUpForm');
+        const btn = document.getElementById('submitBtn');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            btn.innerText = "INITIALIZING_IDENTITY...";
+            btn.disabled = true;
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                await createUserWithEmailAndPassword(auth, email, password);
+                alert("REGISTRATION_COMPLETE: Identity Created.");
+                window.location.href = "Portal.html";
+            } catch (error) {
+                alert("REGISTRATION_FAILED: " + error.message);
+                btn.innerText = "Register Identity";
+                btn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
